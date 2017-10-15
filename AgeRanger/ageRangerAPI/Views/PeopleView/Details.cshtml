@@ -1,0 +1,36 @@
+﻿@model AgeRangerAPI.Models.Person
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<table>
+
+    <tr>
+        <td>
+            <b>First Name:</b>
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.FirstName)
+        </td>
+
+        <td>
+            <b>Last Name:</b>
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.LastName)
+        </td>
+
+        <td>
+            <b>Age:</b>
+        </td>
+
+        <td>
+            @Html.DisplayFor(model => model.Age)
+        </td>
+
+    </tr>
+</table>
+

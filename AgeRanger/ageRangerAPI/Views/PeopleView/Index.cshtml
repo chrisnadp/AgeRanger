@@ -1,0 +1,88 @@
+﻿@model  AgeRangerAPI.Models.PeopleViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Add New", "Create") 
+</p>
+<p>
+    @{
+        if (Model.SelectedPerson != null)
+        {
+            if (Model.DisplayMode == "ReadOnly")
+            {
+                Html.RenderPartial
+                ("Details", Model.SelectedPerson);
+            }
+            if (Model.DisplayMode == "ReadWrite")
+            {
+                Html.RenderPartial
+                ("Edit", Model.SelectedPerson);
+            }
+        }
+        if (Model.DisplayMode == "WriteOnly")
+        {
+            Html.RenderPartial("Create",
+            new AgeRangerAPI.Models.Person());
+        }
+        else
+        {
+            using (Html.BeginForm())
+            {
+            <p>
+                First Name: @Html.TextBox("SearchFirstName")
+                Last Name: @Html.TextBox("SearchLastName")
+
+                <input type="submit" value="Filter" />
+            </p>
+            }
+        }
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            First Name
+        </th>
+        <th>
+           Last Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Age Group
+        </th>
+    </tr>
+
+@foreach (var item in Model.PeopleAgeGroup) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgeGroup.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Person.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Person.Id })
+        </td>
+    </tr>
+}
+
+</table>
+

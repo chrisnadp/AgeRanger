@@ -1,3 +1,6 @@
+The app is set up to look for the db under C:\Temp
+
+
 AgeRanger is a world leading application designed to identify person's age group!
 The only problem with it is... It is not implemented - except a SQLite DB called AgeRanger.db.
 
